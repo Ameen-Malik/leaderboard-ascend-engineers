@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -67,7 +66,7 @@ const LeaderboardEntry = ({ participant, rank, previousRank }: LeaderboardEntryP
   return (
     <div 
       className={`
-        flex items-center justify-between p-4 rounded-lg border transition-all duration-500 ease-in-out
+        flex items-center justify-between p-4 rounded-lg border transition-all duration-1000 ease-in-out
         ${rank <= 3 
           ? 'bg-gradient-to-r from-orange-50 to-yellow-50 border-orange-200 shadow-md' 
           : 'bg-white border-gray-200 hover:shadow-sm'
