@@ -101,7 +101,12 @@ const LiveLeaderboard = () => {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-10">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">100xEngineers</h1>
+          <h1 
+            className="text-2xl font-bold text-gray-900 cursor-pointer hover:text-orange-500 transition-colors"
+            onClick={() => navigate('/')}
+          >
+            100xEngineers
+          </h1>
           <div className="flex items-center space-x-4">
             <Button
               variant="outline"

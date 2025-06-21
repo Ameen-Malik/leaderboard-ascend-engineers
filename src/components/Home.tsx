@@ -17,7 +17,12 @@ const Home = () => {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">100xEngineers</h1>
+          <h1 
+            className="text-2xl font-bold text-gray-900 cursor-pointer hover:text-orange-500 transition-colors"
+            onClick={() => navigate('/')}
+          >
+            100xEngineers
+          </h1>
           <Button
             variant="outline"
             onClick={() => navigate('/leaderboard')}
@@ -66,11 +71,22 @@ const Home = () => {
                 About the Challenge
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-center">
+            <CardContent className="text-left space-y-4">
               <p className="text-lg text-gray-600 leading-relaxed">
-                The Prompt Masters Challenge is a competition designed to test your ability to craft effective prompts for AI systems. 
-                Participants are evaluated on their creativity, precision, and ability to achieve desired outcomes through strategic prompting. 
-                Show off your skills and see how you rank against other AI enthusiasts and professionals!
+                The Prompt Master's Challenge is a fast-paced creative competition where you'll prompt Higgsfield AI to recreate a scene between two keyframes from a Hollywood classic.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                You will be given two scene options, and each scene will have:
+              </p>
+              <ul className="ml-6 space-y-2 text-lg text-gray-600">
+                <li>• A start image</li>
+                <li>• An end image</li>
+              </ul>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Your task is to choose one scene and craft a single prompt that guides Higgsfield AI to generate the full sequence in between.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed font-semibold">
+                You'll have 5 minutes to write your prompt and complete the video generation.
               </p>
             </CardContent>
           </Card>
@@ -84,38 +100,30 @@ const Home = () => {
             <CardHeader className="text-center">
               <CardTitle className="text-3xl font-bold text-gray-900 flex items-center justify-center gap-3">
                 <Award className="text-orange-500" size={32} />
-                Competition Rules
+                Rules
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</div>
-                    <p className="text-gray-700">Scores must be between 0-100 points</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</div>
-                    <p className="text-gray-700">Only registered participants can submit scores</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</div>
-                    <p className="text-gray-700">Each participant can submit multiple attempts</p>
-                  </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">•</div>
+                  <p className="text-gray-700"><strong>Time Limit:</strong> You have 5 minutes to write your prompt and complete the AI generation.</p>
                 </div>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">4</div>
-                    <p className="text-gray-700">Leaderboard updates in real-time</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">5</div>
-                    <p className="text-gray-700">Top 10 participants are displayed publicly</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">6</div>
-                    <p className="text-gray-700">Fair play and original prompts required</p>
-                  </div>
+                <div className="flex items-start gap-3">
+                  <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">•</div>
+                  <p className="text-gray-700"><strong>Choose One Scene:</strong> You may select either of the two scenes provided, but can submit only one final video.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">•</div>
+                  <p className="text-gray-700"><strong>Original Prompts Only:</strong> Your prompt must be entirely your own work.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">•</div>
+                  <p className="text-gray-700"><strong>Higgsfield AI Only:</strong> Use of any tools other than Higgsfield AI is not allowed.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">•</div>
+                  <p className="text-gray-700"><strong>On-Time Submission:</strong> Submissions must be fully generated and submitted within the 5-minute window.</p>
                 </div>
               </div>
             </CardContent>

@@ -96,7 +96,12 @@ const ScoreEntry = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4">
-        <h1 className="text-2xl font-bold text-gray-900">100xEngineers</h1>
+        <h1 
+          className="text-2xl font-bold text-gray-900 cursor-pointer hover:text-orange-500 transition-colors"
+          onClick={() => navigate('/')}
+        >
+          100xEngineers
+        </h1>
       </div>
 
       {/* Main Content */}
