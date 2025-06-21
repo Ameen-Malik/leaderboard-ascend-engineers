@@ -1,19 +1,35 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import AdminAuth from './AdminAuth';
 
 const ScoreEntry = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [score, setScore] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if user came from leaderboard page
+  useEffect(() => {
+    const fromLeaderboard = location.state?.fromLeaderboard;
+    if (!fromLeaderboard) {
+      // Redirect to leaderboard if not coming from there
+      navigate('/leaderboard');
+    }
+  }, [location, navigate]);
+
+  const handleAuthSuccess = () => {
+    setIsAuthenticated(true);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,6 +87,11 @@ const ScoreEntry = () => {
     }
   };
 
+  // Show admin auth if not authenticated
+  if (!isAuthenticated) {
+    return <AdminAuth onAuthSuccess={handleAuthSuccess} />;
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -99,7 +120,7 @@ const ScoreEntry = () => {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
+                  placeholder="Enter participant name"
                   className="w-full"
                   disabled={isSubmitting}
                 />
@@ -113,7 +134,7 @@ const ScoreEntry = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder="Enter participant email"
                   className="w-full"
                   disabled={isSubmitting}
                 />
@@ -127,7 +148,7 @@ const ScoreEntry = () => {
                   type="number"
                   value={score}
                   onChange={(e) => setScore(e.target.value)}
-                  placeholder="Enter your score"
+                  placeholder="Enter score"
                   className="w-full"
                   min="0"
                   max="100"
@@ -144,20 +165,13 @@ const ScoreEntry = () => {
               </Button>
             </form>
 
-            <div className="mt-6 text-center space-y-2">
-              <Button
-                variant="outline"
-                onClick={() => navigate('/leaderboard')}
-                className="text-orange-500 border-orange-500 hover:bg-orange-50 w-full"
-              >
-                View Leaderboard
-              </Button>
+            <div className="mt-6 text-center">
               <Button
                 variant="ghost"
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/leaderboard')}
                 className="text-gray-600 hover:text-gray-800 w-full"
               >
-                Back to Home
+                Back to Leaderboard
               </Button>
             </div>
           </CardContent>

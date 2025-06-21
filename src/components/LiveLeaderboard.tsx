@@ -81,6 +81,10 @@ const LiveLeaderboard = () => {
     fetchLeaderboard();
   };
 
+  const handleSubmitScore = () => {
+    navigate('/submit-score', { state: { fromLeaderboard: true } });
+  };
+
   if (isLoading && participants.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -101,7 +105,7 @@ const LiveLeaderboard = () => {
           <div className="flex items-center space-x-4">
             <Button
               variant="outline"
-              onClick={() => navigate('/')}
+              onClick={handleSubmitScore}
               className="text-orange-500 border-orange-500 hover:bg-orange-50"
             >
               Submit Score
@@ -146,13 +150,13 @@ const LiveLeaderboard = () => {
                   No participants yet
                 </h3>
                 <p className="text-gray-500 mb-6">
-                  Be the first to submit your score!
+                  Be the first to submit a score!
                 </p>
                 <Button
-                  onClick={() => navigate('/')}
+                  onClick={handleSubmitScore}
                   className="bg-orange-500 hover:bg-orange-600 text-white"
                 >
-                  Submit Your Score
+                  Submit Score
                 </Button>
               </div>
             ) : (

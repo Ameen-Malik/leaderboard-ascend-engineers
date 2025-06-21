@@ -3,10 +3,14 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
-import { Trophy, Target, Users, Award } from 'lucide-react';
+import { Trophy, Target, Users, Award, ExternalLink } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
+
+  const handleParticipate = () => {
+    window.open('https://higgsfield.ai/create/video', '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -33,12 +37,22 @@ const Home = () => {
           <p className="text-xl md:text-2xl text-gray-600 mb-8">
             Test your AI prompting skills and compete with the best prompt engineers
           </p>
-          <Button
-            onClick={() => navigate('/submit-score')}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 text-lg rounded-lg transition-colors"
-          >
-            Participate Now
-          </Button>
+          <div className="space-x-4">
+            <Button
+              onClick={handleParticipate}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 text-lg rounded-lg transition-colors inline-flex items-center gap-2"
+            >
+              Participate Now
+              <ExternalLink className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => navigate('/leaderboard')}
+              className="text-orange-500 border-orange-500 hover:bg-orange-50 py-3 px-8 text-lg"
+            >
+              View Leaderboard
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -134,33 +148,6 @@ const Home = () => {
                 <p className="text-gray-600">Challenge yourself with advanced prompting tasks</p>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="py-16 px-6 bg-orange-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Ready to Test Your Skills?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Join the competition and see how you rank among the best prompt engineers
-          </p>
-          <div className="space-x-4">
-            <Button
-              onClick={() => navigate('/submit-score')}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 text-lg rounded-lg transition-colors"
-            >
-              Submit Your Score
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => navigate('/leaderboard')}
-              className="text-orange-500 border-orange-500 hover:bg-orange-50 py-3 px-8 text-lg"
-            >
-              View Leaderboard
-            </Button>
           </div>
         </div>
       </div>
