@@ -3,13 +3,17 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
-import { Trophy, Target, Users, Award, ExternalLink } from 'lucide-react';
+import { Trophy, Target, Users, Award, ExternalLink, Gift } from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
 
   const handleParticipate = () => {
     window.open('https://higgsfield.ai/create/video', '_blank');
+  };
+
+  const handleCheckGuidelines = () => {
+    window.open('https://100xengineers.notion.site/Prompt-Masters-Challenge-Guidelines-2196a631690380a3ae43f66fa86e9986?source=copy_link', '_blank');
   };
 
   return (
@@ -88,6 +92,16 @@ const Home = () => {
               <p className="text-lg text-gray-600 leading-relaxed font-semibold">
                 You'll have 5 minutes to write your prompt and complete the video generation.
               </p>
+              <div className="pt-4 text-center">
+                <Button
+                  onClick={handleCheckGuidelines}
+                  variant="outline"
+                  className="text-orange-500 border-orange-500 hover:bg-orange-50 inline-flex items-center gap-2"
+                >
+                  Check Guidelines
+                  <ExternalLink className="w-4 h-4" />
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -131,32 +145,39 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Stats Section */}
+      {/* Rewards Section */}
       <div className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="text-center shadow-md">
-              <CardContent className="pt-6">
-                <Trophy className="mx-auto text-orange-500 mb-4" size={48} />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Live Rankings</h3>
-                <p className="text-gray-600">Real-time leaderboard updates with smooth animations</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center shadow-md">
-              <CardContent className="pt-6">
-                <Users className="mx-auto text-orange-500 mb-4" size={48} />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Top Performers</h3>
-                <p className="text-gray-600">See the best prompt engineers in action</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center shadow-md">
-              <CardContent className="pt-6">
-                <Target className="mx-auto text-orange-500 mb-4" size={48} />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Skill Testing</h3>
-                <p className="text-gray-600">Challenge yourself with advanced prompting tasks</p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="shadow-lg">
+            <CardHeader className="text-center">
+              <CardTitle className="text-3xl font-bold text-gray-900 flex items-center justify-center gap-3">
+                <Gift className="text-orange-500" size={32} />
+                Rewards
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <div className="space-y-6">
+                <div className="flex items-center justify-center">
+                  <Trophy className="text-orange-500 mr-4" size={48} />
+                  <div className="text-left">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">100x Vouchers</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Top scorers will receive 100x Vouchers that can be redeemed for exclusive benefits and perks within the 100x community.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center">
+                  <Users className="text-orange-500 mr-4" size={48} />
+                  <div className="text-left">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Top Performers Leaderboard</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Get recognized and listed on our prestigious top performers leaderboard, showcasing your prompt engineering excellence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
